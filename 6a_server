@@ -3,9 +3,13 @@ from EmotionDetection.emotion_detection import emotion_detector
 
 app = Flask("Emotion Detector")
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/emotionDetector')
 def sent_detection():
-    text_to_analyse = request.args.get('textToAnalyse')
+    text_to_analyse = request.args.get('textToAnalyze')
     return emotion_detector(text_to_analyse)
 
 
